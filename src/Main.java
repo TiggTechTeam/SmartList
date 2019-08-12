@@ -15,7 +15,7 @@ public class Main {
 		printInstructions();
 		
 		while(!quit) {
-			System.out.println("Enter Your Choice");
+			System.out.println("  Enter Your Choice");
 			choice = scanner.nextInt();
 			scanner.nextLine();
 			

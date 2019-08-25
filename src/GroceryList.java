@@ -1,21 +1,42 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.io.*;
 import java.util.ArrayList;
- 
-public class GroceryList {
+
+
+public class GroceryList extends JPanel implements KeyListener {
 	
-	private ArrayList<String> groceryList = new ArrayList<String>();
-	
-	
-	
-	public ArrayList<String> getGroceryList() {
+	private ArrayList<String> groceryList;
+
+	GroceryList() {
+		addKeyListener(this);
+		setFocusable(true);
+		setFocusTraversalKeysEnabled(false);
+
+		groceryList = new ArrayList<String>();
+	}
+
+	@Override
+	public void paint(Graphics g) {
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.dispose();
+	}
+
+	ArrayList<String> getGroceryList() {
 		return groceryList;
 	}
  
 	public void setGroceryList(ArrayList<String> groceryList) {
 		this.groceryList = groceryList;
 	}
- 
-	public void addGroceryItem(String item) {
-		groceryList.add(item);
+
+	/**
+	 * Add item to GroceryList, if it's not already existing
+	 */
+	void addGroceryItem(String item) {
+
 	}
 	
 	public void printGroceryList() {
@@ -61,5 +82,19 @@ public class GroceryList {
 		}
 		return false;
 	}
- 
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+
+	}
 }

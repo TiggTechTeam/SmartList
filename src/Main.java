@@ -1,5 +1,11 @@
+import javax.swing.*;
+import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.sql.*;
  
 public class Main {
  
@@ -8,8 +14,32 @@ public class Main {
 	
 	
 	public static void main(String[] args) {
- 
- 
+		try {
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/grocery_list?serverTimezone=Europe/Vienna", "root", "root");
+
+			Statement stat = con.createStatement();
+			String sql = "select * from correct_items";
+			ResultSet rs = stat.executeQuery(sql);
+
+			while (rs.next()) {
+				System.out.println(rs.getString("name"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		/* window settings */
+		JFrame window = new JFrame("Grocery List");
+		final int screenWidth = 700;
+		final int screenHeight = 700;
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		window.setBounds((screenSize.width-screenWidth)/2, (screenSize.height-screenHeight)/2, screenWidth, screenHeight);
+		window.setVisible(true);
+		window.setResizable(false);
+		window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		window.add(new GroceryList());
+
+
 		boolean quit = false;
 		int choice = 0;
 		printInstructions();
@@ -93,7 +123,9 @@ public class Main {
 	
 	public static void addItem() {
 		System.out.print("Add : Please enter the grocery Item : ");
-		groceryList.addGroceryItem(scanner.nextLine());
+		String tmp = scanner.nextLine();
+		System.out.println(tmp);
+		groceryList.addGroceryItem(tmp);
 	}
 	
 	public static void modifyItem() {

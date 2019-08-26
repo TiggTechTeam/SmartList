@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SQL/SQL.iml" filepath="$PROJECT_DIR$/SQL/SQL.iml" />
       <module fileurl="file://$PROJECT_DIR$/SmartList.iml" filepath="$PROJECT_DIR$/SmartList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SmartListMain/SmartListMain.iml" filepath="$PROJECT_DIR$/SmartListMain/SmartListMain.iml" />
     </modules>
   </component>
 </project>

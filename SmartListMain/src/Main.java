@@ -1,12 +1,7 @@
-import javax.swing.*;
-import java.awt.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.sql.*;
- 
+
 public class Main {
  
 	private static Scanner scanner = new Scanner(System.in);
@@ -14,30 +9,33 @@ public class Main {
 	
 	
 	public static void main(String[] args) {
+		Screen screen = new Screen("Grocery List");
+		screen.setVisible(true);
+
 		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/grocery_list?serverTimezone=Europe/Vienna", "root", "root");
-
-			Statement stat = con.createStatement();
-			String sql = "select * from correct_items";
-			ResultSet rs = stat.executeQuery(sql);
-
+			Connection database = DriverManager.getConnection("jdbc:mysql://localhost:3306/grocery_list?serverTimezone=Europe/Vienna", "root", "root");
+			Statement queries = database.createStatement();
+			ResultSet rs = queries.executeQuery("select * from items;");
 			while (rs.next()) {
-				System.out.println(rs.getString("name"));
+				screen.insertItem(rs.getString("item"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		/* window settings */
-		JFrame window = new JFrame("Grocery List");
-		final int screenWidth = 700;
-		final int screenHeight = 700;
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		window.setBounds((screenSize.width-screenWidth)/2, (screenSize.height-screenHeight)/2, screenWidth, screenHeight);
-		window.setVisible(true);
-		window.setResizable(false);
-		window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		window.add(new GroceryList());
+
+
+
+
+		/* screen settings
+		JFrame screen = new JFrame("Grocery List");
+
+		screen.setVisible(true);
+		screen.setResizable(false);
+		screen.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		Screen fr = new Screen();
+		fr.setVisible(true);
+		screen.add(fr);*/
 
 
 		boolean quit = false;

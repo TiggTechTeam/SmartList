@@ -16,8 +16,6 @@ public class Screen extends JFrame implements ActionListener {
     Autocomplete autocomplete = new Autocomplete();
 
     public Screen(String title) {
-
-
         setTitle(title);
         setLayout(new FlowLayout());
 
@@ -25,7 +23,8 @@ public class Screen extends JFrame implements ActionListener {
         final int screenWidth = 700;
         final int screenHeight = 700;
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width - screenWidth) / 2, (screenSize.height - screenHeight) / 2, screenWidth, screenHeight);
+        setBounds((screenSize.width - screenWidth) / 2, (screenSize.height - screenHeight) / 2, screenWidth,
+                screenHeight);
 
         setResizable(false);
         add(cmbMessageList);

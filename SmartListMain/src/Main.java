@@ -12,6 +12,8 @@ public class Main {
 		Screen screen = new Screen("Grocery List");
 		screen.setVisible(true);
 
+		boolean a = true;
+
 		try {
 			Connection database = DriverManager.getConnection("jdbc:mysql://localhost:3306/grocery_list?serverTimezone=Europe/Vienna", "root", "root");
 			Statement queries = database.createStatement();

@@ -19,7 +19,10 @@ public class InsertAll_Items {
 
             Statement stat = con.createStatement();
             stat.executeUpdate("drop table if exists grocery_list.items cascade;");
-            stat.executeUpdate("CREATE TABLE grocery_list.items (ID INT(5) NOT NULL AUTO_INCREMENT, Item VARCHAR(45) NOT NULL, PRIMARY KEY (ID), UNIQUE INDEX Item_UNIQUE (Item ASC) VISIBLE);\n");
+            stat.executeUpdate("CREATE TABLE grocery_list.items (" +
+                    "ID INT(5) NOT NULL AUTO_INCREMENT," +
+                    "Item VARCHAR(45) NOT NULL," +
+                    "PRIMARY KEY (ID), UNIQUE INDEX Item_UNIQUE (Item ASC) VISIBLE);\n");
 
             String insert = file.readLine();
             while (insert != null) {

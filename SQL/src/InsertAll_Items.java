@@ -14,7 +14,7 @@ import java.sql.Statement;
 
 public class InsertAll_Items {
     public static void main(String[] args) {
-        try (BufferedReader file = new BufferedReader(new FileReader("SQL/resources/InsertAll_Items.sql"))) {
+        try (BufferedReader file = new BufferedReader(new FileReader("SQL/resources/InsertAll_Items.txt"))) {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/grocery_list?serverTimezone=Europe/Vienna", "root", "root");
 
             Statement stat = con.createStatement();

@@ -1,5 +1,7 @@
 .idea
+lib
 tmp
 
 *.xml
 *.iml
+hi

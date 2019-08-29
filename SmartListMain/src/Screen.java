@@ -1,19 +1,21 @@
-import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.util.ArrayList;
 
 /**************************************************
  *
  **************************************************/
 public class Screen extends JFrame implements ActionListener {
-
     private ArrayList<String> itemColumn = new ArrayList<>();
     private JComboBox cmbMessageList = new JComboBox(new String[]{"hi", "was", "geht"});
     Autocomplete autocomplete = new Autocomplete();
+    Connection database;
+    private JPasswordField passwordField1;
+    private JPanel panel1;
+    private JTextField textField1;
 
     public Screen(String title) {
         setTitle(title);
@@ -37,7 +39,7 @@ public class Screen extends JFrame implements ActionListener {
 
     class Autocomplete extends JPanel {
         Autocomplete() {
-            AutoCompleteDecorator.decorate(cmbMessageList);
+
         }
     }
 

@@ -1,0 +1,6 @@
+Milk;      1.50
+Apple;0.1
+Meat;2
+Cake;5.123
+Wine;2.7
+Bread;9

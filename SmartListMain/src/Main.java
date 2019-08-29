@@ -1,4 +1,6 @@
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,15 +11,15 @@ public class Main {
 	
 	
 	public static void main(String[] args) {
-		Screen screen = new Screen("Grocery List");
-		screen.setVisible(true);
-
 		boolean a = true;
 
 		try {
-			Connection database = DriverManager.getConnection("jdbc:mysql://localhost:3306/grocery_list?serverTimezone=Europe/Vienna", "root", "root");
-			Statement queries = database.createStatement();
+			//	Connection database = DriverManager.getConnection("jdbc:mysql://localhost:3306/grocery_list?serverTimezone=Europe/Vienna", "root", "root");
+
+			Statement queries = DBConnection.dbConnection.createStatement();
 			ResultSet rs = queries.executeQuery("select * from items;");
+			Screen screen = new Screen("Grocery List", database);
+			screen.setVisible(true);
 			while (rs.next()) {
 				screen.insertItem(rs.getString("item"));
 			}

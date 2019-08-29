@@ -31,7 +31,7 @@ public class InitialInsert {
                         "UNIQUE INDEX Name_UNIQUE (Name DESC) VISIBLE);");
 
                 String insert = file.readLine();
-                insert.replaceAll("\\s", "");  // TODO
+                insert = insert.replaceAll("\\s", "");  // TODO
                 String[] insertSplit = insert.split(";");
                 while (insert != null) {
                     stat.executeUpdate("insert into grocery_list.items (name, price) values ('" + insertSplit[0] + "', " + insertSplit[1] + ");");
